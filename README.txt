@@ -1,0 +1,62 @@
+How to compile and run:
+=======================
+
+    1. Install an instance of Python 3.5.1
+    2. Install all the modules enlisted in requirements.txt
+    3. Go to the project root folder, and create a distribution by executing the following:
+        python setup.py develop
+    4. Run the web service by executing the following:
+        pserve --reload development.ini
+
+
+Containerized Web Service (Optional):
+=====================================
+
+    Dockerfile, and other necessary scripts have been added to build a Docker image.
+
+
+How to use the Web Service:
+===========================
+
+    1. Creating a Person's profile:
+
+        A sample curl request can be made by the following way:
+
+            curl -X POST http://localhost:6543/person/
+                {
+                  "first_name": "Kushal",
+                  "surname": "Ahmed",
+                  "date_of_birth": "Dec 20 1984",
+                  "sex": "M",
+                  "email": "kushal.ahmed@griffithuni.edu.au"
+                }
+
+        It returns the id of the person in a json format. For example,
+
+             {
+                "person_id": 123456
+             }
+
+        Field Restrictions:
+
+            1. The field 'date_of_birth' must be in '%b %d %Y' format, e.g. "Dec 20 1984".
+            2. The field 'sex' can take only 'M' or 'F'. Here, 'M' indicates male and 'F' indicates female.
+            3. The fields 'first_name' and 'email' must NOT be null.
+
+
+     2. Reading a Person's profile:
+
+        A sample curl request can be made by the following way:
+
+            curl GET http://localhost:6543/person/123456
+
+
+        It returns the person's profile in a json format. For example,
+
+             {
+               "first_name": "Kushal",
+               "surname": "Ahmed",
+               "date_of_birth": "Dec 20 1984",
+               "sex": "M",
+               "email": "kushal.ahmed@griffithuni.edu.au"
+             }
