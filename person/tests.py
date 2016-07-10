@@ -81,15 +81,7 @@ class BaseTestCase(unittest.TestCase):
         cls.Session = sessionmaker()
 
     def setUp(self):
-        connection = self.engine.connect()
-
-        # begin a non-ORM transaction
-        self.trans = connection.begin()
-
-        # bind an individual Session to the connection
-        Session.configure(bind=connection)
-        self.session = self.Session(bind=connection)
-        #Entity.session = self.session
+        pass
 
 
 class IntegrationTestBase(BaseTestCase):
@@ -116,7 +108,7 @@ class IntegrationTestViews(IntegrationTestBase):
             "first_name": "Roha",
             "surname": "Ahmed",
             "date_of_birth": "Sep 20 2015",
-            "sex": "M",
+            "sex": "F",
             "email": "roha.ahmed@gmail.com"
         }
         post_response = self.app.post('/person/', params=json.dumps(data).encode('utf-8'))
