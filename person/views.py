@@ -50,7 +50,7 @@ def create_person(request):
         return {"error": "Person's profile could not be created."}
 
     response = {
-        'id': person.person_id
+        'person_id': person.person_id
     }
 
     return response
