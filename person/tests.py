@@ -42,6 +42,7 @@ class UnitTestsViews(unittest.TestCase):
         }
         request.body = json.dumps(data).encode('utf-8')
         response = create_person(request)
+        self.assertIsNotNone(response['error'])
         self.assertEqual(response['error'], "Date of birth is in incorrect format.")
 
     def test_create_person_null_first_name_value(self):
