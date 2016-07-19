@@ -64,7 +64,7 @@ class UnitTestsViews(unittest.TestCase):
             "surname": "Ahmed",
             "date_of_birth": "Dec 20 1984",
             "sex": "M",
-            #"email": "kushal.ahmed@griffithuni.edu.au"
+            # "email": "kushal.ahmed@griffithuni.edu.au"
         }
         request.body = json.dumps(data).encode('utf-8')
         response = create_person(request)
